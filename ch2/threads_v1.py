@@ -36,7 +36,7 @@ workers = [Worker(itersPerThread).start(), Worker(itersPerThread).start()]
 
 while len(enumerate()) > 1:
     sleep(0.25) #    delay(0.25)
-    print("activeThreads=%s, count=%d" % (enumerate(), count))
+    print("#activeThreads=%d, count=%d" % (len(enumerate()), count))
 print(count)
 
     

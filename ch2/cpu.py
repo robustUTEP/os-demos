@@ -13,5 +13,4 @@ def delay(sec):
 
 for t in range(5):
     print (val)
-    val += 1
     delay(1)
