@@ -13,9 +13,7 @@ main(int argc, char *argv[])
 	fprintf(stderr, "usage: mem <value>\n"); 
 	exit(1); 
     } 
-    int *p;                   // memory for pointer is on "stack"
-    // p = malloc(sizeof(int));  // malloc'd memory is on "heap"
-    p = &value;
+    int *p = &value;                   // memory for pointer is on "stack"
     assert(p != NULL);
     // printf("(pid:%d) addr of main:     %llx\n", (int) getpid(), (unsigned long long) main);
     printf("(pid:%d) addr of p:        %llx\n", (int) getpid(), (unsigned long long) &p);
@@ -24,7 +22,7 @@ main(int argc, char *argv[])
     while (1) {
 	Spin(1);
 	*p = *p + 1;
-	printf("(pid:%d) value of p: %d\n", getpid(), *p);
+	printf("(pid:%d) p=0x%llx, *p=%d\n", getpid(), (long long)p, *p);
     }
 
     return 0;
