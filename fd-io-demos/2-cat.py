@@ -16,7 +16,9 @@ def printFromFd(ifd):
         numReads += 1
         os.write(1, ibuf)
      # summary to stderr
+    os.close(ifd)
     os.write(2, f"EOF on {numReads}th call to read()\n".encode())
+    
 
 filesToPrint = sys.argv[1:]     # all params are file names
 
