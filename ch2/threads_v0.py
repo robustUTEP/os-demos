@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 from sys import argv
-from time import time
+from time import time, sleep
 from threading import Thread, enumerate
 
 global count
@@ -22,15 +22,15 @@ class Worker(Thread):
         for i in range(self.iters):
             count += 1
 
-def delay(sec):
-    waitUntil = time() + sec
-    while (time() < waitUntil):
-        pass
 
-workers = [Worker(itersPerThread).start(), Worker(itersPerThread).start()]
+workers = [ Worker(itersPerThread) for i in range(2) ]
+
+for worker in workers:
+    worker.start()
+
 
 while len(enumerate()) > 1:
-    delay(0.25)
+    sleep(0.25)
     print("#activeThreads=%d, count=%d" % (len(enumerate()), count))
 print(count)
 

@@ -27,12 +27,11 @@ class Worker(Thread):
             count += 1
             countLock.release()
 
-def delay(sec):
-    waitUntil = time() + sec
-    while (time() < waitUntil):
-        pass
 
-workers = [Worker(itersPerThread).start(), Worker(itersPerThread).start()]
+workers = [ Worker(itersPerThread) for i in range(2) ]
+
+for worker in workers:
+    worker.start()
 
 while len(enumerate()) > 1:
     sleep(0.25) #    delay(0.25)
