@@ -14,9 +14,8 @@ str = argv[1]
 pid = getpid()
 
 def delay(sec):
-    waitUntil = time() + sec
-    while (time() < waitUntil): # busy-wait for <sec> seconds
-        pass 
+    sleep(sec) # tell os to not run for <sec> seconds
+
 
 for t in range(5):
     print("(pid=%d) %s" % (pid, str))
