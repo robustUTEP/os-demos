@@ -7,7 +7,9 @@ outFileName=argv[1]
 
 def dowork():
     totalBytesWritten = 0
-    fd = os.open(outFileName, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, stat.S_IRUSR);
+    print(f"outFileName={outFileName}")
+    fd = os.open(outFileName, os.O_WRONLY | os.O_CREAT | os.O_TRUNC);
+    print(f"fd={fd}")
     assert fd >= 0
     buffer = "hello world\n".encode()
     while len(buffer):
